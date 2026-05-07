@@ -1,11 +1,16 @@
 <section class="pokemon-search-container">
-  @for (pokemon of pokemonList(); track pokemon.pokedexNum) {
-    <mat-card class="pokemon-card" appearance="raised">
-      <img class="pokemon-image" mat-card-sm-image [src]="pokemon.primaryImage" [alt]="pokemon.name"/>
-      <mat-card-title class="pokemon-name">{{ pokemon.name }}</mat-card-title>
-    </mat-card>
-  } @empty {
-    <p>Loading...</p>
-  }
+  <mat-form-field class="pokemon-search-bar">
+    <mat-label>Search</mat-label>
+    <input matInput />
+  </mat-form-field>
+  <div class="pokemon-container">
+    @for (pokemon of pokemonList(); track pokemon.pokedexNum) {
+      <mat-card class="pokemon-card" appearance="raised">
+        <img class="pokemon-image" mat-card-lg-image [src]="pokemon.primaryImage" [alt]="pokemon.name"/>
+        <mat-card-title class="pokemon-name">{{ pokemon.name }}</mat-card-title>
+      </mat-card>
+    } @empty {
+      <p>Loading...</p>
+    }
+  </div>
 </section>
-

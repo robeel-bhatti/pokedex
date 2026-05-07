@@ -6,10 +6,12 @@ import {PokemonSearchResponse} from '../../core/model/api/pokemon-search-respons
 import { Pokemon } from '../../core/model/domain/pokemon';
 import {Observable, switchMap, forkJoin, map} from 'rxjs';
 import {toPokemon} from '../../core/mapper/pokemon-mapper';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 @Component({
   selector: 'app-pokemon-search',
-  imports: [MatCardModule],
+  imports: [MatCardModule, MatFormFieldModule, MatInputModule],
   templateUrl: './pokemon-search.html',
   styleUrl: './pokemon-search.css',
 })
@@ -17,7 +19,7 @@ export class PokemonSearch {
   readonly #pokemonClient = inject(PokemonClient);
   readonly pokemonList = toSignal(this.searchPokemon());
 
-  private searchPokemon() {
+  private searchPokemon(): Observable<Pokemon[]> {
     return this.#pokemonClient.getPokemonList().pipe(map(x => x.data.map(toPokemon)));
   }
 }
