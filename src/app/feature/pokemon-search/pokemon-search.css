@@ -1,0 +1,26 @@
+.pokemon-search-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.pokemon-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  gap: 0.5rem;
+}
+
+.pokemon-name {
+  text-transform: capitalize;
+  text-align: center;
+}
+
+.pokemon-image {
+  width: 100%;
+  max-width: 150px;
+  height: auto;
+}

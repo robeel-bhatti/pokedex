@@ -1,4 +1,4 @@
 export const environment = {
   production: false,
-  basePokeApiUrl: 'https://pokeapi.co/api/v2/',
+  baseApiUrl: 'http://localhost:3000',
 };
