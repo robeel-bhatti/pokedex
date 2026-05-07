@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { environment } from '../../../environments/environment';
 import {PokemonSearchResponse} from '../model/api/pokemon-search-response';
 
-const DEFAULT_LIMIT = 10;
+const DEFAULT_LIMIT = 151;
 const DEFAULT_OFFSET = 0;
 
 @Injectable({ providedIn: 'root'})
