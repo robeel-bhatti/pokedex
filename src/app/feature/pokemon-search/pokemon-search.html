@@ -1,16 +1,20 @@
 <section class="pokemon-search-container">
   <mat-form-field class="pokemon-search-bar">
     <mat-label>Search</mat-label>
-    <input matInput />
+    <input matInput [formControl]="searchControl" />
   </mat-form-field>
   <div class="pokemon-container">
-    @for (pokemon of pokemonList(); track pokemon.pokedexNum) {
-      <mat-card class="pokemon-card" appearance="raised">
-        <img class="pokemon-image" mat-card-lg-image [src]="pokemon.primaryImage" [alt]="pokemon.name"/>
-        <mat-card-title class="pokemon-name">{{ pokemon.name }}</mat-card-title>
-      </mat-card>
-    } @empty {
+    @if (isLoading()) {
       <p>Loading...</p>
+    } @else {
+      @for (pokemon of filteredList(); track pokemon.pokedexNum) {
+        <mat-card class="pokemon-card" appearance="raised">
+          <img class="pokemon-image" mat-card-lg-image [src]="pokemon.primaryImage" [alt]="pokemon.name"/>
+          <mat-card-title class="pokemon-name">{{ pokemon.name }}</mat-card-title>
+        </mat-card>
+      } @empty {
+        <p>No results found for {{ query() }}</p>
+      }
     }
   </div>
 </section>
