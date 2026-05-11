@@ -1,16 +1,27 @@
-<article class="detail-container">
-  @if (isLoading()) {
-    <p>Loading details...</p>
-  } @else if (isError()) {
-    <p>An unexpected error occurred getting Pokemon</p>
-  } @else {
-    @let p = pokemonData()!;
-    <img [src]="p.primaryImage" [alt]="p.name" />
-    <h1>Name: {{ p.name }}</h1>
-    <p>Pokedex Number: {{ p.pokedexNum }}</p>
-    <p>Type 1: {{ p.types.primary }}</p>
-    @if (p.types.secondary) {
-      <p>Type 2: {{ p.types.secondary }}</p>
+<article class="flex justify-center items-center h-screen">
+  <div class="max-w-2xl mx-auto p-6 bg-white rounded-xl shadow-lg">
+    @if (isLoading()) {
+      <p>Loading details...</p>
+    } @else if (isError()) {
+      <p>An unexpected error occurred getting Pokemon</p>
+    } @else {
+      @let p = pokemonData()!;
+      <header class="flex flex-col items-center gap-4 mb-6">
+        <img [src]="p.primaryImage" [alt]="p.name" class="w-48 h-48 object-contain"/>
+        <h1 class="text-2xl font-bold capitalize">{{ p.name }}</h1>
+        <p class="text-gray-500">#{{ p.pokedexNum }}</p>
+      </header>
+      <section class="flex gap-2 justify-center">
+        <span
+          class="px-3 py-1 rounded-full bg-green-100 text-green-700 text-sm font-medium capitalize">
+          {{ p.types.primary }}
+        </span>
+        @if (p.types.secondary) {
+          <span class="px-3 py-1 rounded-full bg-purple-100 text-purple-800 text-sm font-medium capitalize">
+            {{ p.types.secondary }}
+          </span>
+        }
+      </section>
     }
-  }
+  </div>
 </article>
