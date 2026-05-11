@@ -1,0 +1,16 @@
+<article class="detail-container">
+  @if (isLoading()) {
+    <p>Loading details...</p>
+  } @else if (isError()) {
+    <p>An unexpected error occurred getting Pokemon</p>
+  } @else {
+    @let p = pokemonData()!;
+    <img [src]="p.primaryImage" [alt]="p.name" />
+    <h1>Name: {{ p.name }}</h1>
+    <p>Pokedex Number: {{ p.pokedexNum }}</p>
+    <p>Type 1: {{ p.types.primary }}</p>
+    @if (p.types.secondary) {
+      <p>Type 2: {{ p.types.secondary }}</p>
+    }
+  }
+</article>

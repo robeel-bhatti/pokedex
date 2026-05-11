@@ -4,11 +4,13 @@
     <input matInput [formControl]="searchControl" />
   </mat-form-field>
   <div class="pokemon-container">
-    @if (isLoading()) {
+    @if (isError()) {
+      <p>An unexpected error occurred getting Pokemon</p>
+    } @else if (isLoading()) {
       <p>Loading...</p>
     } @else {
       @for (pokemon of filteredList(); track pokemon.pokedexNum) {
-        <mat-card class="pokemon-card" appearance="raised">
+        <mat-card class="pokemon-card" appearance="raised" [routerLink]="['/pokemon', pokemon.pokedexNum]">
           <img class="pokemon-image" mat-card-lg-image [src]="pokemon.primaryImage" [alt]="pokemon.name"/>
           <mat-card-title class="pokemon-name">{{ pokemon.name }}</mat-card-title>
         </mat-card>
